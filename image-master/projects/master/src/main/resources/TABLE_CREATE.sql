@@ -1,5 +1,6 @@
 CREATE TABLE SpeedTest.Account
 (
+	test_id varchar(100),
 	account_id VARCHAR(36) PRIMARY KEY,
 	brokerageaccountnum VARCHAR(16),
 	org VARCHAR(50),
