@@ -1,1 +1,1 @@
-DROP TABLE SpeedTest.Account
+DROP TABLE %NOJOURN SpeedTest.Account
