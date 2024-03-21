@@ -1,1 +1,1 @@
-TRUNCATE table SpeedTest.Account
+TRUNCATE table %NOJOURN SpeedTest.Account

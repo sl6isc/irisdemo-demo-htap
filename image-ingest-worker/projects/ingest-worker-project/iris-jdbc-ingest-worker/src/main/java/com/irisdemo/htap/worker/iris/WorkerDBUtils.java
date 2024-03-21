@@ -170,6 +170,7 @@ public class WorkerDBUtils
     
 	public void createIRISDisableJournalProc(Connection connection) throws SQLException, IOException
 	{
+		/* BDB - replacing explicit proc with %NOJOURN in individual commands 
 		PreparedStatement statement;
 		
 		try
@@ -177,7 +178,6 @@ public class WorkerDBUtils
 		    statement = connection.prepareStatement(config.getIrisProcDisableJournalDrop());
 		    statement.execute();
 		    statement.close();
-
 		}
 		catch (SQLException exception)
 		{
@@ -190,7 +190,7 @@ public class WorkerDBUtils
 	    statement = connection.prepareStatement(config.getIrisProcDisableJournal());
 	    statement.execute();
 	    statement.close();
-
+		*/
     }
     
 	public void createTable(Connection connection) throws SQLException
@@ -216,6 +216,7 @@ public class WorkerDBUtils
 	
 	public static void disableJournalForConnection(Connection connection, boolean disable) throws SQLException
 	{
+		/* BDB - replacing explicit proc with %NOJOURN in individual commands
 		CallableStatement disableJournalStatement = connection.prepareCall("{ ? = call IRISDemo.DisableJournalForConnection(?) }");
 		disableJournalStatement.registerOutParameter(1, Types.VARCHAR);
 		disableJournalStatement.setBoolean(2, disable);
@@ -228,10 +229,12 @@ public class WorkerDBUtils
 		{
 			throw new SQLException(returnMsg);
 		}
+		*/
 	}
 
 	public void createIRISExpandDatabaseProc(Connection connection) throws SQLException, IOException
 	{
+		/* BDB - ObjectScript functions not allowed in Cloud SQL
 		PreparedStatement statement;
 		
 		try
@@ -273,10 +276,12 @@ public class WorkerDBUtils
 				throw exception;
 			}
 		}
+		*/
     }
 	
 	public static void expandDatabase(Connection connection, int databaseSizeInGB) throws SQLException
 	{
+		/* BDB - ObjectScript functions not allowed in Cloud SQL
 		CallableStatement statement = connection.prepareCall("{ ? = call IRISDemo.ExpandDatabase(?) }");
 		String returnMsg;
 
@@ -304,6 +309,6 @@ public class WorkerDBUtils
 					throw new SQLException(returnMsg); // Unpredicted error. Exist for loop with exception
 				}
 			}
+		*/
 		}
-	}
 }
